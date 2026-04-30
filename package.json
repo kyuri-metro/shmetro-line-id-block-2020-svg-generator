@@ -1,11 +1,14 @@
 {
   "name": "@kyuri-metro/shmetro-line-id-block-2020-svg-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "kyuri-metro 组织下的 2020 版上海地铁线路号方块 SVG 生成器。",
   "type": "module",
   "author": "Unnamed2964",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
+    "dist",
     "src",
     "README.md",
     "LICENSE"
@@ -20,8 +23,9 @@
   "homepage": "https://github.com/kyuri-metro/shmetro-line-id-block-2020-svg-generator#readme",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   }
 }
