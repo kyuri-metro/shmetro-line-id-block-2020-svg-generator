@@ -4,6 +4,10 @@
 
 这是 kyuri-metro 组织下的 2020 版线路号方块 SVG 生成仓库，负责提供单一的纯函数导出接口。
 
+## 示例图
+
+![2020 版线路号方块示例图](https://umamichi.moe/tools/shmetro-idblock/output-example.webp)
+
 统一参数规格：
 
 - foreground
