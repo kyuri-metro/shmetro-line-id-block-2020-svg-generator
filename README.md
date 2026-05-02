@@ -17,6 +17,44 @@
 
 导出接口位于 [src/index.ts](src/index.ts)。
 
+## 使用例
+
+安装：
+
+```bash
+npm install @kyuri-metro/shmetro-line-id-block-2020-svg-generator
+```
+
+调用：
+
+```ts
+import { generateLineIdBlock2020Svg } from '@kyuri-metro/shmetro-line-id-block-2020-svg-generator'
+
+const svg = generateLineIdBlock2020Svg({
+	lineNumber: 21,
+	height: 160,
+})
+
+document.body.innerHTML = svg
+```
+
+自定义颜色：
+
+```ts
+import { generateLineIdBlock2020Svg } from '@kyuri-metro/shmetro-line-id-block-2020-svg-generator'
+
+const svg = generateLineIdBlock2020Svg({
+	lineNumber: 26,
+	height: 120,
+	background: '#5F67A9',
+	foreground: '#ffffff',
+})
+```
+
+## 注意
+
+注意：本样式的数字的还原采用了靠左对齐，依赖于字体字形的宽度来取得居中视觉效果，如果在没有 Arial 字体的环境下可能会导致第二个数字过于偏左或偏右。
+
 ## 参考资料
 
 - 2020 版参考资料位于 [docs](docs)
