@@ -1,5 +1,8 @@
 # 上海地铁线路号方块 2020 SVG Generator
 
+[![TypeScript](https://img.shields.io/badge/TypeScript-Source%20Package-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](LICENSE)
+
 > 以下内容为 GPT 5.4 生成，但经过人工正确性检查，你可以作为参考
 
 这是 kyuri-metro 组织下的 2020 版线路号方块 SVG 生成仓库，负责提供单一的纯函数导出接口。
