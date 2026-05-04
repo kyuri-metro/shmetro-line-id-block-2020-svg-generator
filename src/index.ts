@@ -2,6 +2,7 @@ import { SHMETRO_LINE_COLORS } from '@kyuri-metro/shmetro-palette'
 
 export type LineIdBlockProps = {
   background?: string
+  fontFamily?: string
   foreground?: string
   height?: number
   lineNumber: string | number
@@ -24,6 +25,16 @@ type BadgeLayout = {
 
 const FALLBACK_BACKGROUND = '#666666'
 const FALLBACK_FOREGROUND = '#000000'
+export const DEFAULT_LINE_ID_BLOCK_FONT_FAMILY = 'Arial, Helvetica, sans-serif'
+
+function escapeXml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;')
+}
 
 function parseLineNumber(lineNumber: string | number) {
   const lineString = String(lineNumber).trim()
@@ -143,7 +154,13 @@ function formatTransform(transform?: string) {
   return ` transform="${transform}"`
 }
 
-export function generateLineIdBlock2020Svg({ background, foreground, height = 100, lineNumber }: LineIdBlockProps) {
+export function generateLineIdBlock2020Svg({
+  background,
+  fontFamily = DEFAULT_LINE_ID_BLOCK_FONT_FAMILY,
+  foreground,
+  height = 100,
+  lineNumber,
+}: LineIdBlockProps) {
   const parsed = parseLineNumber(lineNumber)
 
   if (!parsed) {
@@ -153,5 +170,5 @@ export function generateLineIdBlock2020Svg({ background, foreground, height = 10
   const palette = getBadgePalette(lineNumber, foreground, background)
   const layout = scaleLayout(getBaseLayout(parsed.lineId, parsed.lineString), height)
 
-  return `<svg width="${layout.width}" height="${layout.height}" viewBox="0 0 ${layout.width} ${layout.height}" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="${layout.width}" height="${layout.height}" fill="${palette.background}"/><text x="${layout.textLayout.x}" y="${layout.textLayout.y}" fill="${palette.foreground}" font-family="Arial" font-size="${layout.textLayout.fontSize}px"${formatLetterSpacing(layout.textLayout.letterSpacing)}${formatTransform(layout.textLayout.transform)}>${layout.text}</text></svg>`
+  return `<svg width="${layout.width}" height="${layout.height}" viewBox="0 0 ${layout.width} ${layout.height}" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="${layout.width}" height="${layout.height}" fill="${palette.background}"/><text x="${layout.textLayout.x}" y="${layout.textLayout.y}" fill="${palette.foreground}" font-family="${escapeXml(fontFamily)}" font-size="${layout.textLayout.fontSize}px"${formatLetterSpacing(layout.textLayout.letterSpacing)}${formatTransform(layout.textLayout.transform)}>${layout.text}</text></svg>`
 }
