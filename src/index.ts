@@ -138,6 +138,16 @@ function getBaseLayout(lineId: number, lineString: string): BadgeLayout {
   return { width: layoutMap.double_2x.width, height: 100, text: lineString, textLayout: layoutMap.double_2x.textLayout }
 }
 
+export function getLineIdBlockWidth(lineNumber: string | number, height = 100) {
+  const parsed = parseLineNumber(lineNumber)
+
+  if (!parsed) {
+    return null
+  }
+
+  return scaleLayout(getBaseLayout(parsed.lineId, parsed.lineString), height).width
+}
+
 function formatLetterSpacing(letterSpacing?: number) {
   if (letterSpacing === undefined) {
     return ''
