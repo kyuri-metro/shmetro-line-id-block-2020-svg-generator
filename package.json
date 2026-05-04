@@ -21,6 +21,16 @@
     "url": "https://github.com/kyuri-metro/shmetro-line-id-block-2020-svg-generator/issues"
   },
   "homepage": "https://shmetro-line-id-block-generator-v2.umamichi.moe/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
